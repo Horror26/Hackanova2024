@@ -64,7 +64,7 @@ const Questions = () => {
               onClick={() => handleAnswerOptionClick(i)}
             >
               <div className="w-[95vw] md:w-[30vw] h-[10vh] absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-lg blur-lg filter group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200"></div>
-              <p className="w-[95vw] md:w-[30vw] h-[10vh] relative inline-flex items-center justify-center px-2 md:px-5 py-2 text-base font-bold text-white transition-all duration-200 bg-gray-900 border-2 border-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 hover:bg-gray-600 rounded-xl md:rounded-3xl">
+              <p className="w-[95vw] font-normal text-xs md:w-[30vw] h-[10vh] relative inline-flex items-center justify-center px-2 md:px-5 py-2 text-base font-bold text-white transition-all duration-200 bg-gray-900 border-2 border-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 hover:bg-gray-600 rounded-xl md:rounded-3xl">
                 {option}
               </p>
             </button>
