@@ -1,5 +1,3 @@
-"use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -48,145 +46,34 @@ export default function DetailsForm() {
   }
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-5"
+    <Form {...form} onSubmit={form.handleSubmit(onSubmit)}>
+      <div className="grid md:grid-cols-2 gap-4">
+        <FormField
+          control={form.control}
+          name="username"
+          render={({ field }) => (
+            <FormItem className="w-full">
+              <FormControl>
+                <Input
+                  placeholder="Username"
+                  className="input-field"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        {/* Add other FormFields here for each input */}
+      </div>
+      <Button
+        type="submit"
+        size="lg"
+        disabled={form.formState.isSubmitting}
+        className="button col-span-2 w-full"
       >
-        <div className="grid md:grid-cols-2 gap-4">
-          <FormField
-            control={form.control}
-            name="username"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormControl>
-                  <Input
-                    placeholder="Username"
-                    className="input-field"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="position"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormControl>
-                  <Input
-                    placeholder="Position"
-                    className="input-field"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="gender"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormControl>
-                  <Dropdown
-                    onChangeHandler={field.onChange}
-                    value={field.value}
-                    data={gender}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="career"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormControl>
-                  <Dropdown
-                    onChangeHandler={field.onChange}
-                    value={field.value}
-                    data={career}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="married"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormControl>
-                  <Dropdown
-                    onChangeHandler={field.onChange}
-                    value={field.value}
-                    data={married}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="relationship"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormControl>
-                  <Dropdown
-                    onChangeHandler={field.onChange}
-                    value={field.value}
-                    data={relationship}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="dob"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
-                    <Image
-                      src="/assets/icons/calendar.svg"
-                      alt="calendar"
-                      width={24}
-                      height={24}
-                      className="filter-grey"
-                    />
-                    <p className="ml-3 whitespace-nowrap text-grey-600">DOB</p>
-                    <DatePicker
-                      selected={field.value}
-                      onChange={(date: Date) => field.onChange(date)}
-                      dateFormat="MM/dd/yyyy"
-                      wrapperClassName="datePicker"
-                    />
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-        <Button
-          type="submit"
-          size="lg"
-          disabled={form.formState.isSubmitting}
-          className="button col-span-2 w-full"
-        >
-          {form.formState.isSubmitting ? "Submitting..." : "Register"}
-        </Button>
-      </form>
+        {form.formState.isSubmitting ? "Submitting..." : "Register"}
+      </Button>
     </Form>
   );
 }
