@@ -53,7 +53,7 @@ export default function DetailsForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-5"
       >
-        <div className="flex flex-col gap-5 md:flex-row">
+        <div className="grid md:grid-cols-2 gap-4">
           <FormField
             control={form.control}
             name="position"
@@ -61,7 +61,7 @@ export default function DetailsForm() {
               <FormItem className="w-full">
                 <FormControl>
                   <Input
-                    placeholder="position"
+                    placeholder="Position"
                     className="input-field"
                     {...field}
                   />
