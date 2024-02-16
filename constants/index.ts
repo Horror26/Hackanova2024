@@ -4,7 +4,15 @@ export const headerLinks = [
     route: "/",
   },
   {
-    label: "My Profile",
+    label: "Community",
+    route: "/community",
+  },
+  {
+    label: "Quiz",
+    route: "/quiz",
+  },
+  {
+    label: "Profile",
     route: "/profile",
   },
 ];

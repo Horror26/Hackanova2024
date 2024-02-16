@@ -38,6 +38,7 @@ export default function DetailsForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       const res = await createUser(values);
+      localStorage.setItem("id", res._id);
       if (res) {
         form.reset();
         router.push("/");

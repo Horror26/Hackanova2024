@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 
 const Header = () => {
   const router = useRouter();
+
   return (
     <header className="w-full border-b">
       <div className="wrapper flex items-center justify-between">
