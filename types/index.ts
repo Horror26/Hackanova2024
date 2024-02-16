@@ -1,13 +1,13 @@
 export type CreateUserParams = {
   email: string;
   name: string;
-  dob: { type: Date; required: true };
-  gender: string;
-  photo: { type: String; required: true };
-  career: { type: String; required: true };
-  married: { type: Boolean; required: true };
-  relationship: { type: Boolean; required: true };
-  position: { type: String; required: true };
+  dob: Date;
+  gender: boolean;
+  photo: string;
+  career: string;
+  married: boolean;
+  relationship: boolean;
+  position: string;
 };
 
 export type UpdateUserParams = {

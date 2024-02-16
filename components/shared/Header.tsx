@@ -24,14 +24,22 @@ const Header = () => {
           </nav>
         )}
         <div className="flex w-32 justify-end gap-3">
-          {true ? (
+          {false ? (
             <MobileNav />
           ) : (
-            <div className="mt-2 space-y-2">
+            <div className="space-y-2">
               <button
                 className="flex items-center rounded-xl border-2  p-2"
                 onClick={() => signIn("google")}
-              ></button>
+              >
+                <img
+                  src="/assets/icons/logo.webp"
+                  alt=""
+                  width={25}
+                  height={25}
+                />
+                <p>Google</p>
+              </button>
             </div>
           )}
         </div>
