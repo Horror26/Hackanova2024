@@ -101,4 +101,37 @@ export const questions = [
       "Depressed",
     ],
   },
+  {
+    id: 4,
+    question:
+      "How do you respond when faced with a challenging situation in your personal life?",
+    options: [
+      "I try to understand the situation from different perspectives and seek support from friends or family.",
+      "I maintain a calm and collected demeanor, focusing on finding solutions rather than dwelling on the problem.",
+      "I see challenges as opportunities for personal growth and strive to overcome them with determination.",
+      "I often feel overwhelmed and powerless when dealing with personal challenges, finding it hard to cope.",
+    ],
+    map: [
+      "Empathetic",
+      "Professional/Pretend",
+      "Positive/Assertive",
+      "Depressed",
+    ],
+  },
+  {
+    id: 5,
+    question: "How do you approach giving feedback to others?",
+    options: [
+      "I provide feedback in a constructive and empathetic manner, focusing on helping others grow.",
+      "I deliver feedback in a professional manner, ensuring clarity and specificity in my comments.",
+      "I believe in the power of feedback to drive improvement and encourage open communication.",
+      "I struggle to give feedback, feeling unsure of how to approach the situation and fearing negative reactions.",
+    ],
+    map: [
+      "Empathetic",
+      "Professional/Pretend",
+      "Positive/Assertive",
+      "Depressed",
+    ],
+  },
 ];
