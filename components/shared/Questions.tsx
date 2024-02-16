@@ -6,12 +6,16 @@ import { useRouter } from "next/navigation";
 
 const Questions = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [values, setValues]: any = useState([]);
+  const [values, setValues] = useState<number[]>([0, 0, 0, 0]);
   const [showScore, setShowScore] = useState(false);
   const router = useRouter();
 
   const handleAnswerOptionClick = (value: number) => {
-    setValues([...values, questions[currentQuestion].map[value]]);
+    setValues((prev: number[]) => {
+      return prev.map((prevEle: any, idx: number) => {
+        return prevEle + questions[currentQuestion].map[value][idx];
+      });
+    });
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
@@ -19,11 +23,12 @@ const Questions = () => {
       setShowScore(true);
     }
   };
-
+  const emo = ["Empathetic", "Professional", "Positive", "Depressed"];
   useEffect(() => {
     if (currentQuestion + 1 == questions.length) {
-      console.log(values);
-      router.push("/");
+      const idx = values.indexOf(Math.max(...values));
+      localStorage.setItem("values", emo[idx]);
+      router.push("/chatbot");
     }
   }, [showScore]);
 

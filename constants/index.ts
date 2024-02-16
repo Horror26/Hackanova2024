@@ -49,6 +49,8 @@ export const relationship = [
   { id: 2, name: "Couple" },
 ];
 
+let personality = [0, 0, 0, 0, 0];
+// emp, pro, pos, dep,
 export const questions = [
   {
     id: 1,
@@ -61,10 +63,10 @@ export const questions = [
       "I often feel demotivated and defeated by criticism, finding it hard to see the value in it.",
     ],
     map: [
-      "Empathetic",
-      "Professional/Pretend",
-      "Positive/Assertive",
-      "Depressed",
+      [1, 0, 0, 0],
+      [0, 1, 0, 0],
+      [0, 0, 1, 0],
+      [0, 0, 0, 1],
     ],
   },
   {
@@ -78,10 +80,10 @@ export const questions = [
       "I find it difficult to maintain professionalism when stressed, often feeling like I'm on the verge of breaking down.",
     ],
     map: [
-      "Empathetic",
-      "Professional/Pretend",
-      "Positive/Assertive",
-      "Depressed",
+      [1, 0, 0, 0],
+      [0, 1, 0, 0],
+      [0, 0, 1, 0],
+      [0, 0, 0, 1],
     ],
   },
   {
@@ -95,10 +97,10 @@ export const questions = [
       "I struggle to see a positive future for myself, often feeling overwhelmed by uncertainty and doubt.",
     ],
     map: [
-      "Empathetic",
-      "Professional/Pretend",
-      "Positive/Assertive",
-      "Depressed",
+      [1, 0, 0, 0],
+      [0, 1, 0, 0],
+      [0, 0, 1, 0],
+      [0, 0, 0, 1],
     ],
   },
   {
@@ -112,10 +114,10 @@ export const questions = [
       "I often feel overwhelmed and powerless when dealing with personal challenges, finding it hard to cope.",
     ],
     map: [
-      "Empathetic",
-      "Professional/Pretend",
-      "Positive/Assertive",
-      "Depressed",
+      [1, 0, 0, 0],
+      [0, 1, 0, 0],
+      [0, 0, 1, 0],
+      [0, 0, 0, 1],
     ],
   },
   {
@@ -128,10 +130,10 @@ export const questions = [
       "I struggle to give feedback, feeling unsure of how to approach the situation and fearing negative reactions.",
     ],
     map: [
-      "Empathetic",
-      "Professional/Pretend",
-      "Positive/Assertive",
-      "Depressed",
+      [1, 0, 0, 0],
+      [0, 1, 0, 0],
+      [0, 0, 1, 0],
+      [0, 0, 0, 1],
     ],
   },
 ];

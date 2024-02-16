@@ -41,7 +41,7 @@ export default function DetailsForm() {
       localStorage.setItem("id", res._id);
       if (res) {
         form.reset();
-        router.push("/");
+        router.push("/quiz");
       }
     } catch (error) {
       console.log(error);
