@@ -32,11 +32,11 @@ export async function getUserById(userId: string) {
   }
 }
 
-export async function updateUser(id: string, user: UpdateUserParams) {
+export async function updateUser(email: string, user: UpdateUserParams) {
   try {
     await connectToDatabase();
 
-    const updatedUser = await User.findOneAndUpdate({ id }, user, {
+    const updatedUser = await User.findOneAndUpdate({ email }, user, {
       new: true,
     });
 

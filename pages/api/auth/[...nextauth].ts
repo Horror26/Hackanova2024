@@ -16,11 +16,11 @@ const authOptions = {
         email: user.email,
         name: user.name,
         dob: new Date(),
-        gender: 0,
+        gender: "Ll",
         photo: user.image,
         career: "carrer",
-        married: 0,
-        relationship: 0,
+        married: "k",
+        relationship: "kjg",
         position: "position",
       };
       await createUser(newUser);

@@ -2,19 +2,21 @@ export type CreateUserParams = {
   email: string;
   name: string;
   dob: Date;
-  gender: boolean;
+  gender: string;
   photo: string;
   career: string;
-  married: boolean;
-  relationship: boolean;
+  married: string;
+  relationship: string;
   position: string;
 };
 
 export type UpdateUserParams = {
-  firstName: string;
-  lastName: string;
-  username: string;
-  photo: string;
+  dob: Date;
+  gender: string;
+  career: string;
+  married: string;
+  relationship: string;
+  position: string;
 };
 
 export type CreateEventParams = {
