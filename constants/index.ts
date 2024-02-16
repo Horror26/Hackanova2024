@@ -4,10 +4,6 @@ export const headerLinks = [
     route: "/",
   },
   {
-    label: "Register",
-    route: "/details/create",
-  },
-  {
     label: "My Profile",
     route: "/profile",
   },
@@ -16,8 +12,10 @@ export const headerLinks = [
 export const defaultValues = {
   dob: new Date(),
   position: "",
+  username: "",
+  photo: "/assets/images/logo.svg",
   gender: "Male",
-  carrer: "Banking",
+  career: "Banking",
   married: "Married",
   relationship: "Single",
 };

@@ -4,9 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import NavItems from "./NavItems";
 import MobileNav from "./MobileNav";
-import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
+  const router = useRouter();
   return (
     <header className="w-full border-b">
       <div className="wrapper flex items-center justify-between">
@@ -15,7 +16,7 @@ const Header = () => {
             src="/assets/images/logo.svg"
             width={128}
             height={38}
-            alt="Evently logo"
+            alt="Logo"
           />
         </Link>
         {true && (
@@ -29,16 +30,10 @@ const Header = () => {
           ) : (
             <div className="space-y-2">
               <button
-                className="flex items-center rounded-xl border-2  p-2"
-                onClick={() => signIn("google")}
+                className="flex items-center rounded-xl border-2 py-1.5 px-2"
+                onClick={() => router.push("/details/create")}
               >
-                <img
-                  src="/assets/icons/logo.webp"
-                  alt=""
-                  width={25}
-                  height={25}
-                />
-                <p>Google</p>
+                Register
               </button>
             </div>
           )}

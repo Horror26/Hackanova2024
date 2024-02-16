@@ -24,7 +24,7 @@ import {
 import DatePicker from "react-datepicker";
 import Image from "next/image";
 import { formSchema } from "@/lib/validator";
-import { updateUser } from "@/lib/actions/user.actions";
+import { createUser } from "@/lib/actions/user.actions";
 import { useRouter } from "next/navigation";
 
 export default function DetailsForm() {
@@ -37,7 +37,7 @@ export default function DetailsForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const res = await updateUser("dhruvrg2003@gmail.com", values);
+      const res = await createUser(values);
       if (res) {
         form.reset();
         router.push("/");
@@ -54,6 +54,22 @@ export default function DetailsForm() {
         className="flex flex-col gap-5"
       >
         <div className="grid md:grid-cols-2 gap-4">
+          <FormField
+            control={form.control}
+            name="username"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <Input
+                    placeholder="Username"
+                    className="input-field"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <FormField
             control={form.control}
             name="position"
@@ -88,7 +104,7 @@ export default function DetailsForm() {
           />
           <FormField
             control={form.control}
-            name="carrer"
+            name="career"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
