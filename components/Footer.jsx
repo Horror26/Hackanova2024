@@ -1,11 +1,14 @@
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
+
+// Images
+import Logo from "../../assets/Logo/Logo-Full-Light.png";
 import "./Footer.css";
 import { FaLinkedin, FaTwitter, FaGoogle, FaInstagram } from "react-icons/fa";
-const Footer = () => {
+
+export const Footer = () => {
   return (
-    <footer className="footer text-black" >
+    <>
+      <footer className="footer" >
         <div className="container">
           <div className="row">
             <div className="footer-col">
@@ -70,14 +73,14 @@ const Footer = () => {
           </div>
         </div>
         <div className=" flex flex-col sm:flex-row justify-center items-center gap-4 ">
-        <p className=" text-xl my-2  ">© 2024</p>
-        <div className=" flex flex-row items-center justify-center ">
-        <img  src="/assets/images/Logo.png" alt="" width={70} height={32} className="rounded-xl " />
-        <p className="">MINDFULME</p>
+        <p className="text-white text-2xl my-2  ">© 2023</p>
+        <div className=" ">
+        <img  src={Logo} alt="" width={120} height={32} className="rounded-xl border-2 border-white p-2" />
         </div>
       </div>
       
       </footer>
+    </>
   );
 };
 
