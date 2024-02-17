@@ -26,6 +26,7 @@ import Image from "next/image";
 import { formSchema } from "@/lib/validator";
 import { createUser } from "@/lib/actions/user.actions";
 import { useRouter } from "next/navigation";
+import useAuthModal from "@/hooks/useAuthModal";
 
 export default function DetailsForm() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -34,14 +35,17 @@ export default function DetailsForm() {
   });
 
   const router = useRouter();
+  const authModal = useAuthModal();
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       const res = await createUser(values);
-      localStorage.setItem("id", res._id);
       if (res) {
+        console.log(res._id);
+        localStorage.setItem("userId", res._id);
         form.reset();
         router.push("/quiz");
+        authModal.onOpen();
       }
     } catch (error) {
       console.log(error);

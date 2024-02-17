@@ -1,11 +1,21 @@
 import { connectToDatabase } from "../database";
 import User from "../database/models/user.model";
+import { getUserById } from "./user.actions";
 
 export default async function getCurrentUser() {
   try {
     await connectToDatabase();
-    const id = localStorage.getItem("id");
-    const currentUser = await User.findById(id);
+    let id, currentUser;
+    if (typeof window !== "undefined" && localStorage.getItem("userId")) {
+      console.log(localStorage.getItem("userId"));
+      id = localStorage.getItem("userId");
+    } else {
+      return null;
+    }
+
+    if (id !== null) {
+      currentUser = await getUserById(id);
+    }
 
     if (!currentUser) {
       return null;
