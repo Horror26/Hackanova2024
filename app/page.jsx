@@ -14,7 +14,7 @@ export default function Home() {
 
     userhelperlibrary({destroy: false, lang: 'en'});
   }, []);
-  setTimeout( () => route.push("./set-timeout"), 5000)
+  setTimeout( () => route.push("./set-timeout"), 120000)
   return (
     <>
       <div className="bg-gray-100 p-4">
