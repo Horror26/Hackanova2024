@@ -1,14 +1,14 @@
-'use client'
+
 import React from 'react';
-import Herosection from './Herosection';
-import Features from './Features';
-import Full from './full';
-import  Activity from './Activity';
+import Herosection from '../../components/home/Herosection';
+import Features from '../../components/home/Features';
+import Full from '../../components/home/full';
+import  Activity from '../../components/home/Activity';
 const LandingPage = () => {
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 p-4">
    {/* <Home/> */}
-     <Herosection/>
+      <Herosection/>
      <Features/>
      <Activity/>
     </div>

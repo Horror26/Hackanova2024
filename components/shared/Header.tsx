@@ -13,12 +13,15 @@ const Header = () => {
     <header className="w-full border-b">
       <div className="wrapper flex items-center justify-between">
         <Link href="/" className="w-36">
+          <div className=" flex items-center justify-center font-bold text-xl">
           <Image
-            src="/assets/images/"
-            width={128}
-            height={38}
+            src="/assets/images/logo.png"
+            width={50}
+            height={10}
             alt="Logo"
           />
+          <h1>MindFULLME</h1>
+          </div>
         </Link>
         {true && (
           <nav className="md:flex-between hidden w-full max-w-xs">
