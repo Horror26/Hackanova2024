@@ -1,16 +1,22 @@
+"use client";
+
 import useChatBotModal from "@/hooks/useChatBotModal";
 import Image from "next/image";
 import React from "react";
+import "@/components/shared/index.css";
+import { useRouter } from "next/navigation";
 
 const Bot = () => {
   const chatBotModal = useChatBotModal();
+  const router = useRouter();
 
   return (
     <div>
-      <p>{chatBotModal.type}</p>
       <div id="container-floating">
         <div
-          onClick={() => chatBotModal.change("grandfather")}
+          onClick={() => {
+            chatBotModal.change("grandfather"), router.push("/chatbot");
+          }}
           className="nd5 nds flex justify-center items-center"
         >
           <Image
@@ -22,7 +28,9 @@ const Bot = () => {
           />
         </div>
         <div
-          onClick={() => chatBotModal.change("grandmother")}
+          onClick={() => {
+            chatBotModal.change("grandmother"), router.push("/chatbot");
+          }}
           className="nd4 nds flex justify-center items-center"
         >
           <Image
@@ -34,7 +42,9 @@ const Bot = () => {
           />
         </div>
         <div
-          onClick={() => chatBotModal.change("mother")}
+          onClick={() => {
+            chatBotModal.change("mother"), router.push("/chatbot");
+          }}
           className="nd3 nds flex justify-center items-center"
         >
           <Image
@@ -46,7 +56,9 @@ const Bot = () => {
           />
         </div>
         <button
-          onClick={() => chatBotModal.change("father")}
+          onClick={() => {
+            chatBotModal.change("father"), router.push("/chatbot");
+          }}
           className="nd1 nds flex justify-center items-center"
         >
           <Image
