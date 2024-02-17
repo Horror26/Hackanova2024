@@ -70,7 +70,7 @@ const Activity = () => {
   const [filter, setFilter] = useState("Positive");
 
   useEffect(() => {
-    if (typeof window !== "undefined" && localStorage.getItem("userId")) {
+    if (typeof window !== "undefined" && localStorage.getItem("values")) {
       const value = localStorage.getItem("values");
       setFilter(value);
     }
