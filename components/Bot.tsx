@@ -38,7 +38,7 @@ const Bot = () => {
             height="35"
             width="35"
             alt="Avatar"
-            src={"/assets/images/grandmother.png"}
+            src={"/assets/images/granny.png"}
           />
         </div>
         <div
