@@ -5,31 +5,40 @@ import Link from "next/link";
 import NavItems from "./NavItems";
 import MobileNav from "./MobileNav";
 import { useRouter } from "next/navigation";
+import useAuthModal from "@/hooks/useAuthModal";
+import { useEffect } from "react";
 
 const Header = () => {
   const router = useRouter();
+  const authModal = useAuthModal();
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && localStorage.getItem("userId")) {
+      authModal.onOpen();
+    }
+  }, []);
 
   return (
     <header className="w-full border-b">
       <div className="wrapper flex items-center justify-between">
         <Link href="/" className="w-36">
           <div className=" flex items-center justify-center font-bold text-xl">
-          <Image
-            src="/assets/images/logo.png"
-            width={50}
-            height={10}
-            alt="Logo"
-          />
-          <h1>MindFULLME</h1>
+            <Image
+              src="/assets/images/logo.png"
+              width={50}
+              height={10}
+              alt="Logo"
+            />
+            <h1>MindFULLME</h1>
           </div>
         </Link>
-        {true && (
+        {authModal.isOpen && (
           <nav className="md:flex-between hidden w-full max-w-xs">
             <NavItems />
           </nav>
         )}
         <div className="flex w-32 justify-end gap-3">
-          {false ? (
+          {authModal.isOpen ? (
             <MobileNav />
           ) : (
             <div className="space-y-2">
