@@ -5,6 +5,7 @@ interface ChatBotModalStore {
   onOpen: () => void;
   onClose: () => void;
   type: string;
+  change: any;
 }
 
 const useChatBotModal = create<ChatBotModalStore>((set) => ({
@@ -12,6 +13,7 @@ const useChatBotModal = create<ChatBotModalStore>((set) => ({
   onOpen: () => set({ isOpen: true }),
   onClose: () => set({ isOpen: false }),
   type: "mom",
+  change: (str: string) => set({ type: str }),
 }));
 
 export default useChatBotModal;
