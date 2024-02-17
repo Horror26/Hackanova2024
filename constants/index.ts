@@ -4,10 +4,13 @@ export const headerLinks = [
     route: "/",
   },
   {
+<<<<<<< HEAD
     label: "Community",
     route: "/https://chat-app-horror26.vercel.app/",
   },
   {
+=======
+>>>>>>> c53f62cd5c71923326bc38a480c0332bab6ab308
     label: "Quiz",
     route: "/quiz",
   },

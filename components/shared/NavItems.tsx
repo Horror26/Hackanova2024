@@ -24,6 +24,13 @@ const NavItems = () => {
           </li>
         );
       })}
+      <li
+        className={`${
+          pathname === "community" && "text-primary-500"
+        } flex-center p-medium-16 whitespace-nowrap`}
+      >
+        <a href={"https://chat-app-horror26.vercel.app/login"}>Community</a>
+      </li>
     </ul>
   );
 };
