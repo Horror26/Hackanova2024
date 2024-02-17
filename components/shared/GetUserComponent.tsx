@@ -1,13 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css"
 import getCurrentUser from "@/lib/actions/getCurrentUser";
 
-const GetCurrentUserComponent = async ({person}: any) => {
+const GetCurrentUserComponent = ({person}: any) => {
   person = "dad"
   console.log(person)
-  const user = await getCurrentUser();
+  let user
+  useEffect(() => { 
+    const fetch = async () =>{
+      user = await getCurrentUser();
+      console.log(user)
+    }
+    fetch();
+  },[])
+
   console.log(user)
   const [messages, setMessages] = useState([
     { person: "user", text: "Hello" },
