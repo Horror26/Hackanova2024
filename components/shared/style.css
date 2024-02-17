@@ -41,6 +41,9 @@
     
 }
 .message-history-wrapper {
+    margin: auto;
+}
+.message-history-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
