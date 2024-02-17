@@ -8,7 +8,8 @@ import userhelperlibrary from "userhelperlibrary";
 
 export default function Home() {
   useEffect(() => {
-    userhelperlibrary();
+
+    userhelperlibrary({destroy: false, lang: 'en'});
   }, []);
   return (
     <>
