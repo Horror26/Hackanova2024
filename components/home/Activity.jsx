@@ -7,24 +7,16 @@ const activities = [
     image: "/assets/images/a1.jpg",
   },
   {
-    name: "Breathing exercises",
+    name: "Breathing",
     image: "/assets/images/a2.jpg",
   },
   {
-    name: "Progressive muscle relaxation",
-    image: "/assets/images/a3.jpg",
-  },
-  {
     name: "Body scan",
-    image: "/assets/images/f1.jpg",
+    image: "/assets/images/bodyscan.jpg",
   },
   {
     name: "Guided imagery",
-    image: "/assets/images/f1.jpg",
-  },
-  {
-    name: "Mindfulness journaling",
-    image: "/assets/images/f1.jpg",
+    image: "/assets/images/guided.jpg",
   },
 ];
 
@@ -37,7 +29,10 @@ const Activity = () => {
 
       <div className="mt-8 flex flex-col sm:flex-row gap-14 w-full items-center justify-center align-baseline">
         {activities.map((activity, index) => (
-          <div key={index} className="text-center flex-row sm:flex-col flex-wrap">
+          <div
+            key={index}
+            className="text-center flex-row sm:flex-col flex-wrap"
+          >
             <img
               alt={activity.name}
               className="mx-auto h-32 w-32 rounded-full"

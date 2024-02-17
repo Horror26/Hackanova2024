@@ -1,22 +1,25 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import "./style.css"
-import getCurrentUser from "@/lib/actions/getCurrentUser";
+import "./style.css";
+import useChatBotModal from "@/hooks/useChatBotModal";
+import { getUserById } from "@/lib/actions/user.actions";
 
-const GetCurrentUserComponent = ({person}: any) => {
-  person = "dad"
-  console.log(person)
-  let user
-  useEffect(() => { 
-    const fetch = async () =>{
-      user = await getCurrentUser();
-      console.log(user)
-    }
+const GetCurrentUserComponent = () => {
+  const chatBotModal = useChatBotModal();
+  const [user, setUser] = useState({ gender: "male", career: "Education" });
+  console.log(chatBotModal.type);
+  useEffect(() => {
+    const fetch = async () => {
+      if (typeof window !== "undefined" && localStorage.getItem("userId")) {
+        const data = await getUserById(localStorage.getItem("userId") || "{}");
+        setUser(data);
+      }
+    };
     fetch();
-  },[])
+  }, []);
 
-  console.log(user)
+  console.log(user);
   const [messages, setMessages] = useState([
     { person: "user", text: "Hello" },
     // { person: "user", text: "Im really sad" },
@@ -29,18 +32,15 @@ const GetCurrentUserComponent = ({person}: any) => {
     // { person: "assistant", text: "Hello Small Bro" },
     // { person: "user", text: "Im really sad" },
   ]);
-  const [curr_msg, set_curr_msg] = useState("")
+  const [curr_msg, set_curr_msg] = useState("");
   const handleSubmit = (e: any) => {
-    console.log(curr_msg)
+    console.log(curr_msg);
     setMessages((prev) => {
-      return [
-        ...prev,
-        {person: "user", text: curr_msg}
-      ]
-    })
-    set_curr_msg("")
-    sendOtherChat()
-  } 
+      return [...prev, { person: "user", text: curr_msg }];
+    });
+    set_curr_msg("");
+    sendOtherChat();
+  };
   const {
     GoogleGenerativeAI,
     HarmCategory,
@@ -55,8 +55,7 @@ const GetCurrentUserComponent = ({person}: any) => {
   const API_KEY = "AIzaSyAu9Os4eR-pnlw1JbRE_DpccFoHeYI9ghk";
 
   async function runChat() {
-    const person = "dad";
-    const personality = localStorage.getItem("values")
+    const personality = localStorage.getItem("values");
     const genAI = new GoogleGenerativeAI(API_KEY);
     const model = genAI.getGenerativeModel({ model: MODEL_NAME });
 
@@ -93,37 +92,62 @@ const GetCurrentUserComponent = ({person}: any) => {
     });
 
     const result = await chat.sendMessage(
-      `Provide me a reply, I am, ${curr_msg} make it sound like my ${person} talking to me It should sound real and supportive towards good, answer in just one sentence only My work at ${work} and my gender is ${gender} and have a ${personality} perrsonality`
+      `Provide me a reply, I am, ${curr_msg} make it sound like my ${chatBotModal.type} talking to me It should sound real and supportive towards good, answer in just one sentence only. My gender is ${user.gender} and have a ${personality} perrsonality`
     );
+    // const result = await chat.sendMessage(
+    //   `Provide me a reply, I am, ${curr_msg} make it sound like my ${chatBotModal.type} talking to me It should sound real and supportive towards good, answer in just one sentence only My work at ${user.career} and my gender is ${user.gender} and have a ${personality} perrsonality`
+    // );
     const response = result.response;
-    return response.text()
-    console.log(response.text());
+    return response.text();
   }
-
-  const work = "Software Engineer"
-  const gender = "male"
 
   const sendOtherChat = async () => {
-    const resp = await runChat()
+    const resp = await runChat();
     setMessages((prev) => {
-      return [
-        ...prev,
-        {person: "assistant", text: resp}
-      ]
-    })
-  }
+      return [...prev, { person: "assistant", text: resp }];
+    });
+  };
 
   // runChat();
   return (
     <section className="chatbot-page-wrapper">
       <div className="message-history-wrapper">
-        <div className="messages">{messages.map((message, idx) => {
-          return <div key={idx} className={message.person === "user" ? "my-message": "other-message"}>{message.text}</div>
-        })}</div>
-        <div className="person-image"><img src="/assets/images/grandmother.png"/></div>
+        <div className="messages">
+          {messages.map((message, idx) => {
+            return (
+              <div
+                key={idx}
+                className={
+                  message.person === "user" ? "my-message" : "other-message"
+                }
+              >
+                {message.text}
+              </div>
+            );
+          })}
+        </div>
+        <div className="person-image">
+          {chatBotModal.type === "grandfather" && (
+            <img src="/assets/images/grandfatherslide.png" />
+          )}
+          {chatBotModal.type === "grandmother" && (
+            <img src="/assets/images/grandmother.png" />
+          )}
+          {/* {chatBotModal.type === "mother" && (
+            <img src="/assets/images/motherslide.png" />
+          )}*/}
+          {chatBotModal.type === "father" && (
+            <img src="/assets/images/fatherslide.jpg" />
+          )}
+        </div>
       </div>
       <div className="reply">
-        <input type="text" value={curr_msg} onChange={(e) => set_curr_msg(e.target.value)}/> <button onClick={handleSubmit}>Send</button>
+        <input
+          type="text"
+          value={curr_msg}
+          onChange={(e) => set_curr_msg(e.target.value)}
+        />
+        <button onClick={handleSubmit}>Send</button>
       </div>
     </section>
   );

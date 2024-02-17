@@ -13,12 +13,10 @@ export const Features = () => {
           <img
             alt="AI chatbot counseling"
             className="home-feature-image"
-            src="/assets/images/f1.jpg"
+            src="/assets/images/chatbot.jpg"
           />
           <div>
-            <h3>
-              AI chatbot counseling
-            </h3>
+            <h3>AI chatbot counseling</h3>
             <p>
               Talk to an AI counselor trained in cognitive behavioral therapy
             </p>
@@ -28,14 +26,12 @@ export const Features = () => {
           <img
             alt="AI chatbot counseling"
             className="home-feature-image"
-            src="/assets/images/f1.jpg"
+            src="/assets/images/quiz.jpg"
           />
           <div>
-            <h3>
-              AI chatbot counseling
-            </h3>
+            <h3>Gamified Assessment</h3>
             <p>
-              Talk to an AI counselor trained in cognitive behavioral therapy
+              Engage in our mental health gamified quiz, designed to educate
             </p>
           </div>
         </div>
@@ -43,15 +39,11 @@ export const Features = () => {
           <img
             alt="AI chatbot counseling"
             className="home-feature-image"
-            src="/assets/images/f1.jpg"
+            src="/assets/images/community.jpg"
           />
           <div>
-            <h3>
-              AI chatbot counseling
-            </h3>
-            <p>
-              Talk to an AI counselor trained in cognitive behavioral therapy
-            </p>
+            <h3>Community</h3>
+            <p>Join our open forum for mental health discussion</p>
           </div>
         </div>
         {/* <div>
