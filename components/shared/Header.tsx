@@ -23,13 +23,14 @@ const Header = () => {
       <div className="wrapper flex items-center justify-between">
         <Link href="/" className="w-36">
           <div className=" flex items-center justify-center font-bold text-xl">
-            <Image
-              src="/assets/images/logo.png"
+            <img
+              src={"/assets/images/Logo.png"}
+              alt=""
               width={50}
-              height={10}
-              alt="Logo"
+              height={20}
+              className="rounded-xl pr-1"
             />
-            <h1>MindFULLME</h1>
+            <h1 className=" font-semibold">MindFullMe</h1>
           </div>
         </Link>
         {authModal.isOpen && (
