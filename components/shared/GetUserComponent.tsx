@@ -21,22 +21,14 @@ const GetCurrentUserComponent = () => {
 
   console.log(user);
   const [messages, setMessages] = useState([
-    { person: "user", text: "Hello" },
-    // { person: "user", text: "Im really sad" },
-    // { person: "assistant", text: "Hello Small Bro" },
-    // { person: "user", text: "Im really sad" },
-    // { person: "assistant", text: "Hello Small Bro" },
-    // { person: "user", text: "Im really sad" },
-    // { person: "assistant", text: "Hello Small Bro" },
-    // { person: "user", text: "Im really sad" },
-    // { person: "assistant", text: "Hello Small Bro" },
-    // { person: "user", text: "Im really sad" },
+    { role: "user", parts: "Hello" },
+    { role: "model", parts: "Hello" },
   ]);
   const [curr_msg, set_curr_msg] = useState("");
   const handleSubmit = (e: any) => {
     console.log(curr_msg);
     setMessages((prev) => {
-      return [...prev, { person: "user", text: curr_msg }];
+      return [...prev, { role: "user", parts: curr_msg }];
     });
     set_curr_msg("");
     sendOtherChat();
@@ -50,14 +42,15 @@ const GetCurrentUserComponent = () => {
   if (typeof window !== "undefined") {
     values = localStorage.getItem("values");
   }
+  values = "positive"
   console.log(values);
   const MODEL_NAME = "gemini-1.0-pro";
   const API_KEY = "AIzaSyAu9Os4eR-pnlw1JbRE_DpccFoHeYI9ghk";
+  const genAI = new GoogleGenerativeAI(API_KEY);
+  const model = genAI.getGenerativeModel({ model: MODEL_NAME });
 
   async function runChat() {
     const personality = localStorage.getItem("values");
-    const genAI = new GoogleGenerativeAI(API_KEY);
-    const model = genAI.getGenerativeModel({ model: MODEL_NAME });
 
     const generationConfig = {
       temperature: 0.9,
@@ -84,27 +77,35 @@ const GetCurrentUserComponent = () => {
         threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
       },
     ];
-
+    // For text-only input, use the gemini-pro model
+    const model = genAI.getGenerativeModel({ model: "gemini-pro"});
+  
+    console.log([...messages])
     const chat = model.startChat({
-      generationConfig,
-      safetySettings,
-      history: [],
+      history: [
+        ...messages
+      ],
+      generationConfig: {
+        maxOutputTokens: 100,
+      },
     });
-
-    const result = await chat.sendMessage(
-      `Provide me a reply, I am, ${curr_msg} make it sound like my ${chatBotModal.type} talking to me It should sound real and supportive towards good, answer in just one sentence only. My gender is ${user.gender} and have a ${personality} perrsonality`
-    );
-    // const result = await chat.sendMessage(
-    //   `Provide me a reply, I am, ${curr_msg} make it sound like my ${chatBotModal.type} talking to me It should sound real and supportive towards good, answer in just one sentence only My work at ${user.career} and my gender is ${user.gender} and have a ${personality} perrsonality`
-    // );
-    const response = result.response;
-    return response.text();
+  
+    const msg = `Provide me a reply, I am, ${curr_msg} make it sound like my ${chatBotModal.type} talking to me It should sound real and supportive towards good, answer in just one sentence only. My gender is ${user.gender} and have a ${personality} perrsonalit`;
+  
+    const result = await chat.sendMessage(msg);
+    const response = await result.response;
+    const text = response.text();
+    // console.log(text);
+    return text
   }
 
+
   const sendOtherChat = async () => {
+    console.log("in send chat")
     const resp = await runChat();
+    console.log(resp)
     setMessages((prev) => {
-      return [...prev, { person: "assistant", text: resp }];
+      return [...prev, { role: "model", parts: resp }];
     });
   };
 
@@ -118,10 +119,10 @@ const GetCurrentUserComponent = () => {
               <div
                 key={idx}
                 className={
-                  message.person === "user" ? "my-message" : "other-message"
+                  message.role === "user" ? "my-message" : "other-message"
                 }
               >
-                {message.text}
+                {message.parts}
               </div>
             );
           })}
