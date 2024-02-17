@@ -3,7 +3,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="w-screen ">
+    <div className="w-screen mb-16">
       <Questions />
     </div>
   );

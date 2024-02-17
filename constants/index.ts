@@ -5,7 +5,7 @@ export const headerLinks = [
   },
   {
     label: "Community",
-    route: "/community",
+    route: "/https://chat-app-horror26.vercel.app/",
   },
   {
     label: "Quiz",
