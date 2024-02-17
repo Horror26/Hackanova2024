@@ -12,7 +12,7 @@ const useChatBotModal = create<ChatBotModalStore>((set) => ({
   isOpen: false,
   onOpen: () => set({ isOpen: true }),
   onClose: () => set({ isOpen: false }),
-  type: "mom",
+  type: "grandmother",
   change: (str: string) => set({ type: str }),
 }));
 

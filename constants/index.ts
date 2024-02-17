@@ -11,10 +11,6 @@ export const headerLinks = [
     label: "Quiz",
     route: "/quiz",
   },
-  {
-    label: "Profile",
-    route: "/profile",
-  },
 ];
 
 export const defaultValues = {
