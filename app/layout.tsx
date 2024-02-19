@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "MindFulMe",
   description: "A platform for health management.",
   icons: {
-    icon: "/assets/images/logo.svg",
+    icon: "/icon.png",
   },
 };
 
