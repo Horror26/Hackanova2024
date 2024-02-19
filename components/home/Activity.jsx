@@ -85,7 +85,7 @@ const Activity = () => {
       <div className="mt-8 flex flex-col sm:flex-row gap-14 w-full items-center justify-center align-baseline">
         {activities.map((activity, index) =>
           activity.personality === filter ? (
-            <div
+            <div data-aos="zoom-in"
               key={index}
               className="text-center flex-row sm:flex-col flex-wrap"
             >

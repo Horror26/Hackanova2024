@@ -3,13 +3,13 @@ import "./styles/features.css";
 export const Features = () => {
   return (
     <section className="home-features-section mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 className="home-features-title">Features</h2>
-      <p className="mb-8">
+      <h2 data-aos="fade-right" className="home-features-title">Features</h2>
+      <p data-aos="fade-right" className="mb-8">
         MindfulMe is more than just a meditation app. We offer a variety of
         features to help you manage stress and improve your mental wellbeing.
       </p>
       <div className="features-images-container-wrapper flex-col sm:flex-row">
-        <div className="features-images-container">
+        <div data-aos="zoom-in" className="features-images-container">
           <img
             alt="AI chatbot counseling"
             className="home-feature-image"
@@ -22,7 +22,7 @@ export const Features = () => {
             </p>
           </div>
         </div>
-        <div className="features-images-container">
+        <div data-aos="zoom-in" className="features-images-container">
           <img
             alt="AI chatbot counseling"
             className="home-feature-image"
@@ -35,7 +35,7 @@ export const Features = () => {
             </p>
           </div>
         </div>
-        <div className="features-images-container">
+        <div data-aos="zoom-in" className="features-images-container">
           <img
             alt="AI chatbot counseling"
             className="home-feature-image"

@@ -20,6 +20,20 @@
     font-weight: 900;
     font-size: 3rem;
 }
+.descrption-wrapper{
+    max-width: 75%;
+}
+@media (max-width: 768px) {
+    .text-wrapper-hero > h2 {
+        font-size: 1.5rem;
+        font-weight: 3300;
+    }
+    .descrption-wrapper{
+        font-size: 0.8rem;
+        max-width: 12rem;
+    
+    }
+}   
 .her-button {
     background-color: #19a2e6;
     font-size: 1rem;
