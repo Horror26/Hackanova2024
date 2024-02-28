@@ -1,5 +1,9 @@
 import DetailsForm from "@/components/shared/DetailsForm";
 
+export const metadata={
+  title:"Registerion form",
+  description:"add your profile details for  registration"
+}
 const Details = () => {
   return (
     <>
