@@ -13,8 +13,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "MindFulMe - Health Managment Platform",
-  description: "Start your journey to better health with MindfulMe.",
+ 
   icons: {
     icon: "/icon.png",
   },
